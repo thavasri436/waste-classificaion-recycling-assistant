@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b4d">
+  <title>EcoSort | Waste Classification Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">♻</span><span>EcoSort<small>SMART WASTE ASSISTANT</small></span></a>
+    <a class="nav-link" href="#how-it-works">How it works</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> SMALL ACTIONS. BIG IMPACT.</span>
+        <h1>Waste less.<br><span>Recycle smarter.</span></h1>
+        <p>Upload a photo of a waste item to explore its possible category and learn how to dispose of it more responsibly.</p>
+        <div class="hero-points"><span>✓ Simple to use</span><span>✓ Practical tips</span><span>✓ Eco-conscious choices</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="art-circle circle-one"></div><div class="art-circle circle-two"></div><div class="leaf leaf-one">✦</div><div class="recycle-symbol">♻</div><div class="art-label">A cleaner tomorrow<br><b>starts with you.</b></div></div>
+    </section>
+
+    <section class="workspace" aria-labelledby="upload-title">
+      <div class="section-heading"><div><span class="eyebrow">TRY THE DEMO</span><h2 id="upload-title">What are you throwing away?</h2></div><span class="step-pill">STEP 01 / 02</span></div>
+      <div class="upload-card">
+        <form id="upload-form">
+          <label class="drop-zone" id="drop-zone" for="image-input">
+            <input id="image-input" name="image" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+            <div class="upload-icon">↑</div>
+            <strong>Drop your image here</strong>
+            <span>or <span class="browse-text">browse files</span></span>
+            <small>PNG, JPG or WEBP · Maximum 8 MB</small>
+            <img id="preview" alt="Selected waste item preview" hidden>
+          </label>
+          <div class="file-row" id="file-row" hidden><span id="file-name"></span><button type="button" id="remove-file" class="text-button">Remove</button></div>
+          <button class="primary-button" id="classify-button" type="submit">Classify waste <span>→</span></button>
+          <p class="privacy-note">Your image is processed for this demo request and is not saved to a collection.</p>
+        </form>
+        <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+        <section id="result" class="result" hidden aria-live="polite">
+          <div class="result-top"><span class="result-icon">✓</span><div><span class="eyebrow">POSSIBLE MATCH</span><h3 id="result-category">Plastic</h3></div><span id="confidence" class="confidence"></span></div>
+          <div class="result-detail"><span class="detail-icon">♻</span><div><strong>Suggested disposal</strong><p id="result-bin"></p></div></div>
+          <div class="result-detail"><span class="detail-icon">✳</span><div><strong>Eco tip</strong><p id="result-advice"></p></div></div>
+          <p id="result-notice" class="notice"></p>
+          <button type="button" id="try-again" class="secondary-button">Try another image</button>
+        </section>
+      </div>
+    </section>
+
+    <section class="categories" id="how-it-works">
+      <div class="section-heading"><div><span class="eyebrow">KNOW YOUR WASTE</span><h2>Every item has a better next step.</h2></div></div>
+      <div class="category-grid">
+        <article class="category-card"><span class="category-emoji">🥬</span><h3>Organic</h3><p>Food scraps and plant waste may be suitable for composting.</p></article>
+        <article class="category-card"><span class="category-emoji">🧴</span><h3>Plastic</h3><p>Empty and rinse recyclable containers where local rules allow.</p></article>
+        <article class="category-card"><span class="category-emoji">📄</span><h3>Paper</h3><p>Keep recyclable paper clean and dry.</p></article>
+        <article class="category-card"><span class="category-emoji">🔋</span><h3>E-waste</h3><p>Take electronics and batteries to an authorized collection point.</p></article>
+      </div>
+    </section>
+    <section class="how-panel"><div class="how-number">02</div><div><span class="eyebrow">IMPORTANT TO KNOW</span><h2>Use local recycling guidance.</h2><p>Disposal rules vary by area. This student prototype uses simple demo heuristics, not a trained AI model, so always verify the suggested category before disposing of an item.</p></div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="/"><span class="brand-mark">♻</span><span>EcoSort<small>MAKE EVERY CHOICE COUNT</small></span></a><span>Student project prototype · Built for a greener future</span></footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
